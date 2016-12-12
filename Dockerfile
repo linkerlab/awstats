@@ -13,7 +13,8 @@ RUN apt-get update -y && apt-get install apache2 -y && \
   a2enmod cgi && \
   mv cgi-bin awstats && \
   chown www-data:www-data -R awstats && \ 
-  mv awstats /usr/lib/cgi-bin 
+  mv awstats /usr/lib/cgi-bin && \
+  chmod o=rx /var/log/apache2/
 
 ADD ./awstats.linoxide.conf /usr/lib/cgi-bin/awstats/awstats.linoxide.conf
 ADD ./run.sh /
